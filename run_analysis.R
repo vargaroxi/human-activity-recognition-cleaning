@@ -60,8 +60,7 @@ activity <- featureMap[as.character(activity[,1])]
 
 # Merge all the columns together and convert the df to tibble
 measurementData <- as_tibble(cbind(subjects, activity, measurementData))
-write.csv(measurementData, "measurementData.csv", col.names = TRUE)
 
 # Create a second summary table
 measurementSummary  <- measurementData %>% group_by(subject, activity) %>% summarize(across(-(1:2), \(x) mean(x, na.rm = TRUE) ))
-write.csv(measurementSummary, "measurementSummary.csv", col.names = TRUE)
+write.table(measurementSummary, "measurementSummary.txt", row.names = FALSE)
