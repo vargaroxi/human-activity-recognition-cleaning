@@ -36,5 +36,5 @@ The script run_analysis.R does the following:\
 6. Merges the subject index and the activity names vector with the measurement table, so that they are label the rows\
 7. From this data table creates an other data table with the average of each variable for each activity and each subject.
 
-The result of steps 1-6 can be found in this file.\
-The result of step 7 can be found in this file.
+The result of steps 1-6 can be found in the "measurementData.txt" file.\
+The result of step 7 can be found in the "measurementSummary.txt" file.
