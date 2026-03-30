@@ -1,0 +1,40 @@
+---
+title: "README"
+author: "Me"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Getting and Cleaning Data Course Project
+
+This is my project for the Coursera Getting and Cleaning Data Course by the John Hopkins University. The purpose of this project is to demonstrate my ability to collect, work with, and clean a data set.
+
+## The original data set
+
+The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
+
+<http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones>
+
+The full data for the project can be found here: <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
+
+For the purpose of this project the following files are used:\
+- "features.txt": List of all features\
+- "activity_labels.txt": Links the class labels with their activity name
+
+The following files are available for the train and test data. Their descriptions are equivalent.\
+- "test/subject_test.txt": Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.\
+- "test/X_test.txt": Test set\
+- "test/Y_test.txt": Test labels, i.e. the class labels that can be linked with the activity names
+
+## The cleaned data
+
+The script run_analysis.R does the following:\
+1. Downloads all the needed data from the "UCI HAR Dataset" folder.\
+2. Merges the X_test and X_train sets row-wise 3. With the variable names in the feature vector extracts only the mean and standard variation for each measurement\
+4. Processes the variable names so that they are clean and descriptive names\
+5. Links the class labels with the activity names\
+6. Merges the subject index and the activity names vector with the measurement table, so that they are label the rows\
+7. From this data table creates an other data table with the average of each variable for each activity and each subject.
+
+The result of steps 1-6 can be found in this file.\
+The result of step 7 can be found in this file.
