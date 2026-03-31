@@ -7,73 +7,55 @@ output: html_document
 
 # Code Book
 
-## The feature vector
+## Variable Naming Convention
 
-In the Feature Selection section the cook book of the original data can be found, keeping only the relevant information for this analysis.
+Each variable name follows this structure:
 
-The feature vector is modified so that the variable names are descriptive:
+domain + signal + statistic + axis
 
-| Original sub-string | Descriptive sub-string |
-|---------------------|------------------------|
-| t                   | time\_                 |
-| f                   | frequency\_            |
-| Body                | body\_                 |
-| Gravity             | gravity\_              |
-| Acc                 | acceleration\_         |
-| Gyro                | gyroscopic\_           |
-| Jerk                | jerk\_                 |
-| Mag                 | magnitude\_            |
-| mean()              | mean\_                 |
-| std()               | std\_                  |
-| XYZ                 | XYZ                    |
-| \-                  | ""                     |
+Where:
 
-For each measurement type only the mean and standard deviation features were used.
+- domain:  
+  - time = time domain signal  
+  - frequency = frequency domain signal  
 
-### Feature Selection
+- signal:  
+  - body_acceleration  
+  - gravity_acceleration  
+  - body_gyroscopic  
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+- statistic:  
+  - mean = average of the signal over the time window  
+  - std = standard deviation of the signal  
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
+- axis:  
+  - x, y, z (spatial axes)
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag.(Note the 'f' to indicate frequency domain signals).
+Example:
 
-These signals were used to estimate variables of the feature vector for each pattern: '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-
--   tBodyAcc-XYZ
--   tGravityAcc-XYZ
--   tBodyAccJerk-XYZ
--   tBodyGyro-XYZ
--   tBodyGyroJerk-XYZ
--   tBodyAccMag
--   tGravityAccMag
--   tBodyAccJerkMag
--   tBodyGyroMag
--   tBodyGyroJerkMag
--   fBodyAcc-XYZ
--   fBodyAccJerk-XYZ
--   fBodyGyro-XYZ
--   fBodyAccMag
--   fBodyAccJerkMag
--   fBodyGyroMag
--   fBodyGyroJerkMag
-
-The set of variables that were estimated from these signals are:
-
--   mean(): Mean value
--   std(): Standard deviation
-
-The complete list of variables of each feature vector is available in 'features.txt'
+time_body_acceleration_mean_x
 
 ## Activity Labels
 
-All 30 subject performed 6 activities during which the measurements were performed.
+The dataset includes 30 subjects performing 6 activities:
 
-| Class label | Activity label     |
-|-------------|--------------------|
-| 1           | WALKING            |
-| 2           | WALKING_UPSTAIRS   |
-| 3           | WALKING_DOWNSTAIRS |
-| 4           | SITTING            |
-| 5           | STANDING           |
-| 6           | LAYING             |
+| Class | Activity |
+|------|---------|
+| 1 | WALKING |
+| 2 | WALKING_UPSTAIRS |
+| 3 | WALKING_DOWNSTAIRS |
+| 4 | SITTING |
+| 5 | STANDING |
+| 6 | LAYING |
+
+## Final Dataset
+
+The cleaned dataset includes:
+
+- subject: ID of the subject (1–30)
+- activity: activity performed
+- measurement variables: mean and standard deviation of signals
+
+## Summary Dataset
+
+The file `measurementSummary.txt` contains the average of each variable for each subject and each activity. Each row represents a subject–activity pair.

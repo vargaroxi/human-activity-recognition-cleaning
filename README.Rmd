@@ -5,36 +5,47 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-# Getting and Cleaning Data Course Project
+# Human Activity Recognition Data Cleaning
 
-This is my project for the Coursera Getting and Cleaning Data Course by the John Hopkins University. The purpose of this project is to demonstrate my ability to collect, work with, and clean a data set.
+This project prepares a tidy dataset from the Human Activity Recognition Using Smartphones dataset. The goal is to clean, label, and summarize accelerometer data for further analysis.
 
-## The original data set
+## Data Source
 
-The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
+The data comes from the UCI Machine Learning Repository:
+
+<https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
+
+A full description is available at the site where the data was obtained:
 
 <http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones>
 
-The full data for the project can be found here: <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
+## Files Used 
 
-For the purpose of this project the following files are used:\
 - "features.txt": List of all features\
-- "activity_labels.txt": Links the class labels with their activity name
+- "activity_labels.txt": mapping between activity IDs and activity names
+- train/ and test/ datasets:
+  - "subject_test.txt": Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.\
+  - "X_test.txt": measurements\
+  - "Y_test.txt": activity IDs
 
-The following files are available for the train and test data. Their descriptions are equivalent.\
-- "test/subject_test.txt": Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.\
-- "test/X_test.txt": Test set\
-- "test/Y_test.txt": Test labels, i.e. the class labels that can be linked with the activity names
+## Processing Steps
 
-## The cleaned data
+The script run_analysis.R performs the following:\
 
-The script run_analysis.R does the following:\
-1. Downloads all the needed data from the "UCI HAR Dataset" folder.\
-2. Merges the X_test and X_train sets row-wise 3. With the variable names in the feature vector extracts only the mean and standard variation for each measurement\
-4. Processes the variable names so that they are clean and descriptive names\
-5. Links the class labels with the activity names\
-6. Merges the subject index and the activity names vector with the measurement table, so that they are label the rows\
-7. From this data table creates an other data table with the average of each variable for each activity and each subject.
+1. Loads all the needed data from the "UCI HAR Dataset" folder\
+2. Merges them into a single dataset \
+3. Extracts only the mean and standard deviation for each measurement\
+4. Applies descriptive variable names\
+5. Replaces activity IDs with descriptive activity names\
+6. Combines subject, activity and measurement data\
+7. Creates a summary dataset with the average of each variable for each activity and each subject.
+
+## Output
 
 The result of steps 1-6 can be found in the "measurementData.txt" file.\
 The result of step 7 can be found in the "measurementSummary.txt" file.
+
+## How To Run
+
+1. Download and unzip the dataset into the working directory
+2. In R run source("run_analysis.R")
